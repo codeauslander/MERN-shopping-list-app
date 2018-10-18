@@ -11,5 +11,7 @@ create-react-app client
 
 npm run dev
 
+cd client
 npm i bootstrap reactstrap uuid react-transition-group
+npm i redux react-redux redux-thunk
 
