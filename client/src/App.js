@@ -21,7 +21,7 @@ class App extends Component {
             <ShoppingList />
           </Container>
           
-          <h1 style={{textAlign:'center', marginTop: '2rem'}}>Welcome to the Nominator App! Where you can add items or delete them, is up to You to decide.</h1>
+          <h6 style={{textAlign:'center', marginTop: '2rem'}}>Welcome! to the Nominator App, Where you can add items or delete them, is up to you to decide.</h6>
         </div>
       </Provider> 
     );
