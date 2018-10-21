@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
   //   ]
   // };
   componentDidMount() {
-    this.props.getItems();
+    // this.props.getItems();
   };
   onDeleteClick = id => {
     this.props.deleteItem(id);
@@ -67,9 +67,9 @@ import PropTypes from 'prop-types';
 }
 
 ShoppingList.propTypes = {
-  getItems: PropTypes.func.isRequired,
+  // getItems: PropTypes.func.isRequired,
   // deleteItem: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired,
+  // item: PropTypes.object.isRequired,
 }
 const mapStateToProps = (state) => ({
   item: state.item

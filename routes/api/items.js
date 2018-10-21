@@ -5,17 +5,20 @@ const router = express.Router();
 const Item = require('../../models/Item.js');
 
 // @route GET api/items
-// @desc Get all Items
-// @access Public
 router.get('/', (req, res) => {
   Item.find()
     .sort({ date: -1 })
     .then(items => res.json(items))
 });
 
+// @route GET api/items/:id
+router.get('/:id',  (req, res) => {
+  Item.findById(req.params.id)
+    .then( item => res.json(item))
+    .catch( error => res.status(404).json({success: false}));
+});
+
 // @route POST api/items
-// @desc create a Item
-// @access Public
 router.post('/', (req, res) => {
   const newItem = new Item({
     name: req.body.name
@@ -24,8 +27,6 @@ router.post('/', (req, res) => {
 });
 
 // @route DELETE api/items/:id
-// @desc delete a Item
-// @access Public
 router.delete('/:id', (req, res) => {
   Item.findById(req.params.id)
     .then( item => item.remove().then( () => res.json({success: true})))

@@ -4,6 +4,7 @@ import './App.css';
 import AppNavbar from './components/AppNavbar';
 import ShoppingList from './components/ShoppingList';
 import ItemModal from './components/ItemModal';
+import Kitchen from './components/Kitchen';
 import { Container } from 'reactstrap';
 
 import { Provider } from 'react-redux';
@@ -19,6 +20,8 @@ class App extends Component {
             
             <ItemModal />
             <ShoppingList />
+            <Kitchen />
+
           </Container>
           
           <h6 style={{textAlign:'center', marginTop: '2rem'}}>Welcome! to the Nominator App, Where you can add items or delete them, is up to you to decide.</h6>

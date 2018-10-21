@@ -1,9 +1,12 @@
- const express = require("express");
+const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require('path');
 
 const items = require('./routes/api/items.js');
+const fridges = require('./routes/api/fridges.js');
+const pantries = require('./routes/api/pantries.js');
+const meals = require('./routes/api/meals.js');
 
 const app = express();
  
@@ -15,12 +18,16 @@ const db = require('./config/keys.js').mongoURI;
 
 // connect to mongo
 mongoose
-  .connect(db)
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log('mongodb connected...'))
   .catch(error => console.log(error));
 
 // use ports  
 app.use('/api/items', items);
+app.use('/api/fridges', fridges);
+app.use('/api/pantries', pantries);
+app.use('/api/meals', meals);
+
 
 // server static assets if in production
 if (process.env.NODE_ENV === 'production') {
