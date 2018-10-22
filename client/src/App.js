@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import AppNavbar from './components/AppNavbar';
-import ShoppingList from './components/ShoppingList';
 import ItemModal from './components/ItemModal';
-import Kitchen from './components/Kitchen';
+import Collection from './components/Collection';
 import { Container } from 'reactstrap';
 
 import { Provider } from 'react-redux';
@@ -19,8 +18,7 @@ class App extends Component {
           <Container>
             
             <ItemModal />
-            <ShoppingList />
-            <Kitchen />
+            <Collection />
 
           </Container>
           

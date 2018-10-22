@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { ListGroupItem, Button } from 'reactstrap';
+import { CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { deleteItem } from '../actions/itemActions';
 
-class Item extends Component {
-  // methods
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: '',
-      name: '',
-    }
-    
-  }
-  componentDidMount() {
-    this.setState({id: this.props.id, name: this.props.name});
-  }
+const Item  = props =>
+  <CSSTransition key={props.id} timeout={500} classNames="fade">
+    <ListGroupItem>
+      <Button
+        className="remove-btn"
+        color="danger"
+        size="sm"
+        onClick={() => props.deleteItem(props.id)}
+      >
+        &times;
+      </Button>
+      {props.name}
+    </ListGroupItem>
+  </CSSTransition>;
 
-  render() {
-    const  {id, name} = this.state;
-    console.log(this.state);
-    return (
-      <div>
-        
-        <h6>hey: {id} - {name}</h6>
-        
-        
-      </div>
-    )
-
-  }
+Item.propTypes = {
+  // deleteItem: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
 }
 
-export default Item;
+const mapStateToProps = (state) => ({
+  item: state.item
+})
+  
+export default connect(mapStateToProps,{ deleteItem })(Item);

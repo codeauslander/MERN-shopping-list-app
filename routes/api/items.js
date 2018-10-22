@@ -4,29 +4,32 @@ const router = express.Router();
 // Item model
 const Item = require('../../models/Item.js');
 
-// @route GET api/items
+// GET api/items
 router.get('/', (req, res) => {
   Item.find()
     .sort({ date: -1 })
     .then(items => res.json(items))
 });
 
-// @route GET api/items/:id
+// GET api/items/:id
 router.get('/:id',  (req, res) => {
   Item.findById(req.params.id)
     .then( item => res.json(item))
     .catch( error => res.status(404).json({success: false}));
 });
 
-// @route POST api/items
+// POST api/items
 router.post('/', (req, res) => {
   const newItem = new Item({
-    name: req.body.name
+    name: req.body.name,
+    fridge: req.body.fridge,
+    pantry: req.body.pantry,
+    meal: req.body.meal,
   });
   newItem.save().then(item => res.json(item));
 });
 
-// @route DELETE api/items/:id
+// DELETE api/items/:id
 router.delete('/:id', (req, res) => {
   Item.findById(req.params.id)
     .then( item => item.remove().then( () => res.json({success: true})))

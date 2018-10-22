@@ -4,21 +4,21 @@ const router = express.Router();
 // Pantry model
 const Pantry = require('../../models/Pantry.js');
 
-// @route GET api/pantries
+// GET api/pantries
 router.get('/', (req, res) => {
   Pantry.find()
     .sort({ date: -1 })
     .then(pantries => res.json(pantries))
 });
 
-// @route GET api/pantries/:id
+// GET api/pantries/:id
 router.get('/:id',  (req, res) => {
   Pantry.findById(req.params.id)
     .then( pantry => res.json(pantry))
     .catch( error => res.status(404).json({success: false}));
 });
 
-// @route POST api/pantries
+// POST api/pantries
 router.post('/', (req, res) => {
   const newPantry = new Pantry({
 
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
   newPantry.save().then(pantry => res.json(pantry));
 });
 
-// @route DELETE api/pantries/:id
+// DELETE api/pantries/:id
 router.delete('/:id', (req, res) => {
   Pantry.findById(req.params.id)
     .then( pantry => pantry.remove().then( () => res.json({success: true})))
